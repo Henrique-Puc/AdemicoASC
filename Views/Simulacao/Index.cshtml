@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "ASC";
+}
+
+<link href="~/Content/reset.css" rel="stylesheet" />
+<link href="~/Content/normalize.css" rel="stylesheet" />
+<link href="~/Content/grid.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+
+<section class="cadastro">
+    <div class="container">
+        <section>
+
+            <div class="form_cadastro">
+                <div class="grid-3">
+                    <label for="NumeroTurmas">Número de Turmas:</label>
+                </div>
+                <div class="grid-5">
+                    <input type="text" name="NumeroTurmas" value="" class="nx" id="numeroTurmas" />
+                </div>
+
+                <br />
+                <br />
+
+                <div class="grid-3">
+                    <label for="NumeroAlunos">Número de Alunos:</label>
+                </div>
+
+                <div class="grid-3">
+                    <input type="text" name="NumeroAlunos" value="" class="nx" id="numeroAlunos" />
+                </div>
+
+                <a href="#" id="btnProximo" class="button_pg">Gerar Turmas</a>
+
+            </div>
+        </section>
+    </div>
+</section>
+
+<footer>
+
+</footer>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#btnProximo").click(function () {
+
+            var qtdTurmas = $("#numeroTurmas").val();
+            var qtdAlunos = $('#numeroAlunos').val();
+
+            if (qtdTurmas == "" || qtdAlunos == "") {
+                alert("Campos Obrigatórios");
+            }
+            else {
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: '/Simulacao/GeraAlunos',
+                    data: { "qtdTurmas": qtdTurmas, "qtdAlunos": qtdAlunos },
+                    success: function (result) {
+                        if (result == "Ok") {
+                            window.location.href = "/Simulacao/Materia";
+                        }
+                    },
+                    error: function (result) {
+                        alert("Erro ao gerar a Simulação");
+                    }
+                });
+            }
+
+         })
+
+     });
+
+</script>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AdemicoASC.Models.Materia>
+
+<table>
+    <tr>
+        <td>
+            Matéria
+        </td>
+        <td>
+            Peso Nota 1
+        </td>
+        <td>
+            Peso Nota 2
+        </td>
+        <td>
+            Peso Nota 3
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoProva1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoProva2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoProva3)
+            </td>
+
+        </tr>
+    }
+</table>

@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Matéria";
+}
+
+
+<link href="~/Content/reset.css" rel="stylesheet" />
+<link href="~/Content/normalize.css" rel="stylesheet" />
+<link href="~/Content/grid.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+
+
+<section class="cadastro">
+    <div class="container">
+        <section>
+
+            <div class="form_cadastro">
+                <div class="grid-1">
+                    <label for="Materia">Matéria:</label>
+                </div>
+                <div class="grid-11">
+                    <input type="text" name="Materia" value="" id="materia" maxlength="100" />
+                </div>
+
+                <br />
+                <br />
+
+                <div class="grid-4">
+                    <label for="Peso1">Peso Nota 1:</label>
+                    <input type="text" name="Peso1" value="" class="nx" id="peso1" />
+                </div>
+
+                <div class="grid-4">
+                    <label for="Peso2">Peso Nota 2:</label>
+                    <input type="text" name="Peso2" value="" class="nx" id="peso2" />
+                </div>
+
+                <div class="grid-4">
+                    <label for="Peso3">Peso Nota 3:</label>
+                    <input type="text" name="Peso3" value="" class="nx" id="peso3" />
+                </div>
+
+                <div>
+                    <a href="#" id="gravarMateria" class="button_pg">Gravar</a>
+
+                </div>
+
+                <br />
+                <hr />
+                <br />
+                <a href="#" id="btnSimular" class="button_pg">Simular</a>
+                <br />
+                <br />
+                <div class="cab">
+                    <div class="dados">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+
+<footer>
+
+</footer>
+
+<script type="text/javascript">
+
+    function materiaGravada() {
+        var dados = "<div class=\"grid-3\">" + $("#materia").val() + "</div>" +
+            "<div class=\"grid-3\">" + $('#peso1').val() + "</div>" +
+            "<div class=\"grid-3\">" + $('#peso2').val() + "</div>" +
+            "<div class=\"grid-3\">" + $('#peso3').val() + "</div> <br />";
+
+              $(".cab").empty();
+               var valor = "<div class=\"dados\"> </div>";
+               $(".cab").append(valor);
+
+                exibirDados()
+
+            $("#materia").val("");
+            $('#peso1').val("");
+            $('#peso2').val("");
+            $('#peso3').val("");
+    }
+
+    function exibirDados() {
+        
+            var url = '/Materia/Dados';
+
+                $.post(url, function(data) {
+                     $(data).insertAfter(".dados");   
+            });
+    }
+
+    $(document).ready(function () {
+
+        $("#gravarMateria").click(function () {
+
+            var materia = $("#materia").val();
+            var peso1 = $('#peso1').val().replace(".", ",");
+            var peso2 = $('#peso2').val().replace(".", ",");
+            var peso3 = $('#peso3').val().replace(".", ",");
+
+            var materia = {
+                "Nome": materia,
+                "PesoProva1": peso1,
+                "PesoProva2": peso2,
+                "PesoProva3": peso3
+            }
+
+            if (peso1 == "" || peso2 == "" || peso3 == "") {
+                alert("Campos Obrigatórios");
+            }
+            else {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: "json",
+                url: '/Materia/GravarMateria',
+                data: JSON.stringify(materia),
+                success: function (result) {
+                    if (result == "Ok") {
+                        materiaGravada();
+                    }
+                },
+                error: function (result) {
+                    alert("Erro ao gravar a matéria");
+                }
+            });
+        }
+        })
+
+
+        $("#btnSimular").click(function () {
+
+
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                dataType: "json",
+                url: '/Simulacao/Simular',
+                success: function (result) {
+                    if (result == "Ok") {
+                       window.location.href = "/Simulacao/Resultado";
+                    }
+                },
+                error: function (result) {
+                    alert("Erro ao gravar a matéria");
+                }
+            });
+
+        });
+
+        exibirDados();
+
+    });
+
+</script>

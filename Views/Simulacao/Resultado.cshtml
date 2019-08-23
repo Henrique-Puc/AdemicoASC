@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AdemicoASC.Models.Prova>
+
+<section class="cadastro">
+    <div class="container">
+        <section>
+
+            <table>
+                <tr>
+                    <td>
+                        Aluno
+                    </td>
+                    <td>
+                        Materia
+                    </td>
+                    <td>
+                        Turma
+                    </td>
+                    <td>
+                        Prova 1
+                    </td>
+                    <td>
+                        Prova 2
+                    </td>
+                    <td>
+                        Prova 3
+                    </td>
+                    <td>
+                        Média
+                    </td>
+                    <td>
+                        Resultado
+                    </td>
+                </tr>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Aluno.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Materia.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Aluno.Turma.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NotaProva1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NotaProva2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NotaProva3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MediaProva)
+                        </td>
+
+                        @if (item.MediaProva >= 6)
+                        {
+                            <td>
+                                Aprovado
+                            </td>
+                        }
+                        else if (item.MediaProva <= 4)
+                        {
+                            <td>
+                                Reprovado
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Provafinal
+                            </td>
+                        }
+
+                    </tr>
+                }
+            </table>
+
+        </section>
+    </div>
+</section>

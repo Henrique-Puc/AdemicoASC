@@ -1,0 +1,156 @@
+/*Estilos gerais*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Logo */
+
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:16px;
+    line-height:20px;
+}
+
+.logo {
+    width: 100px;
+    padding-top: 17px;
+}
+
+/* Header */
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #cbcbd3;
+    padding: 10px 0;
+}
+
+.header_menu {
+    text-align:right;
+}
+
+.header_menu ul li {
+    display: inline-block;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.header_menu ul li a {
+    color:#4185e5;
+    font-weight: bold;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 0;
+ }
+
+
+    .header_menu ul li a:hover {
+        color: #ffd800;
+    }
+
+/* Introdução */
+
+.introducao {
+    width: 100%;
+    background: url('../imagens/prova.jpg') no-repeat center;
+    background-size: cover;
+    margin-top: 80.3px;
+    height: 575px;
+    padding-top: 60px;
+    
+}
+
+.introducao h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #FFF;
+    text-align: center;
+}
+ 
+.quote-externo {
+     max-width: 600px;
+     text-align: center;
+     margin: 0 auto;
+}
+
+    .quote-externo p {
+        color: white;
+        text-shadow: 0.1em 0.1em 0.2em black;
+        margin-bottom: 20px;
+    }
+
+
+        .quote-externo p::before, .quote-externo p::after {
+            content: "";
+            display: block; /*Padrão after e before tem um display inline*/
+            width: 120px;
+            height: 3px;
+            background: white;
+            margin: 10px auto;
+        }
+
+
+    .quote-externo cite {
+        font-weight: normal;
+        text-shadow: 0.1em 0.1em 0.1em #808080;
+    }
+
+/*Cadastro Sorteio*/
+
+.cadastro {
+    width: 100%;
+    background: #FFF;
+    margin-top: 87.3px;
+    height: 500px;
+    padding-top: 12px;
+}
+
+    .cadastro h1 {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+.form_cadastro {
+    padding: 10px;
+}
+
+.nx {
+    width: 50px;
+}
+
+.item2 {
+    width: 100%;
+    margin-top: 12.3px;
+    height: 10px;
+    padding-top: 18px;
+    padding-left: 165px;
+    text-align:right;
+}
+
+footer {
+    background: #efeded;
+    width: 100%;
+    height : 70px;
+}
+
+.button_pg {
+    background: #4185e5;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-family: Open Sans;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+input {
+    width : 100%;
+    margin-left: 10px;
+}

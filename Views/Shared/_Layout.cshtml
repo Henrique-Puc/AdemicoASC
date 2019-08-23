@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -ASC Henrique Costa</title>
+
+    <link href="~/Content/grid.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <a href="/Home/index" class="grid-4">
+                <img src="~/imagens/logo.svg" alt="logo" class="logo" />
+            </a>
+
+            <nav class="header_menu grid-12">
+                <ul>
+                    <li><a href="/Simulacao/Index">Simulação</a></li>
+                    <li><a href="/Simulacao/Resultado">Resultado</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="">
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
